@@ -103,7 +103,7 @@ ScriptableObjects and the initial values are overwritten. Then a PostProcessingV
 The Update method can be used to dynamically change the parameters of the post processing effects during a stage.
 OnDisable is handled by parent class TripStageBase (see above).
 
-![](screen.png)
+![](/screen.PNG)
 
 # Spawning Dancers
 ## Generate People Script - GeneratePeople.cs
