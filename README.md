@@ -1,7 +1,9 @@
 # ImmersiveStoryTelling-group-11
 
 # LSD Effects
+
 An LSD trip is composed out of a couple of stages. We defined an enum type for this. Bad Trip stage is theoretically wrong but is added for educational purpose and to achieve a shock effect.
+
 ```
 public enum LSDTripStage
 {
@@ -15,14 +17,22 @@ public enum LSDTripStage
     BadTrip
 }
 ```
+
+
 ## LSD Effect Manager - Effects/LSDEffectManager.cs
+
 This script is the core of the LSD trip logic. It configures the trip stage lengths, activates the necessary scripts with the **post processing effects**, initiates the **LSDEffects** class and assigns an event listener to the **TripStageStartEvent**, it also initializes the **SelectLSDCharacterEvent** and assigns a listener that starts the trip coroutine when the SelectLSDCharacterEvent triggers. It loads the Bad Trip Scene after the other stages.
 
+
 ## LSD Effects - Effects/LSDEffects.cs
+
 Enumerates the stages and invokes the next stage after waiting for the previous one to complete. It acts as a timer with respect to the stage durations defined in the LSD Effect Manager class.
 
+
 ## Effect Scripts
+
 ### TripStageBase
+
 The base class for each trip stage post processing effect script. 
 ```
 using UnityEngine;
@@ -37,13 +47,16 @@ public class TripStageBase : MonoBehaviour
     }
 }
 ```
+
 Each effect inherits from this base class and has a postprocessing volume and destroys the volume on disable. The effect manager enables/disables any effect by simply enabling/disabling the relevant script. (see LSDEffectManager.cs:StartEffect)
 
 ```
     gameObject.GetComponent<IntenseHallucinations>().enabled = true;
     gameObject.GetComponent<IntenseHallucinations>().enabled = false;
 ```
+
 A stage script looks something like this...
+
 ```
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -111,6 +124,7 @@ public class MildHallucinations : TripStageBase
     }
 }
 ```
+
 OnEnable is used to easily switch effects on and off. When this lifecycle hook is called, the effects are initiated as  
 ScriptableObjects and the initial values are overwritten. Then a **PostProcessingVolume** is created with the overriden effects.
 The Update method can be used to dynamically change the parameters of the post processing effects during a stage.
@@ -118,10 +132,15 @@ OnDisable is handled by parent class **TripStageBase** (see above). All stages u
 
 ***
 
+
 # Spawning Dancers
+
 ## Generate People Script - GeneratePeople.cs
+
 A script that takes dancer prefabs (models) as input from the editor and the number of dancers to spawn. We defined the spawning area with min and max values for the X and Z positions. The script keeps track of the positions of the spawned characters and makes sure other characters are spawned at a certain distance with respect to the ones that exist (see GetValidRandomPosition()). We noticed performance degrades when spawning too many dancers.
-```using System.Collections;
+
+```
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
