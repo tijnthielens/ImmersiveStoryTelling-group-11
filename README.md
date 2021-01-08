@@ -1,7 +1,20 @@
 # ImmersiveStoryTelling-group-11
 
-# LSD Effects 
-
+# LSD Effects
+An LSD trip is composed out of a couple of stages. We defined an enum type for this. Bad Trip stage is theoretically wrong but is added for educational purpose and to achieve a shock effect.
+´´´
+public enum LSDTripStage
+{
+    None,
+    Onset,
+    MildHallucinations,
+    MildIntenseTransition,
+    IntenseHallucinations,
+    PsychedelicPhase,
+    FractalPhase,
+    BadTrip
+}
+´´´
 ## LSD Effect Manager - Effects/LSDEffectManager.cs
 This script is the core of the LSD trip logic. It configures the trip stage lengths, activates the necessary scripts with the post processing effects, initiates the LSDEffects class and assigns an event listener to the TripStageStartEvent, it also initializes the SelectLSDCharacterEvent and assigns a listener that starts the trip coroutine when the SelectLSDCharacterEvent triggers. It loads the Bad Trip Scene after the other stages.
 
@@ -101,7 +114,7 @@ public class MildHallucinations : TripStageBase
 OnEnable is used to easily switch effects on and off. When this lifecycle hook is called, the effects are initiated as  
 ScriptableObjects and the initial values are overwritten. Then a PostProcessingVolume is created with the overriden effects.
 The Update method can be used to dynamically change the parameters of the post processing effects during a stage.
-OnDisable is handled by parent class TripStageBase (see above).
+OnDisable is handled by parent class TripStageBase (see above). All stages use a similar script.
 
 # Spawning Dancers
 ## Generate People Script - GeneratePeople.cs
