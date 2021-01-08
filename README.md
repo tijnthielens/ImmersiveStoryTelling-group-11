@@ -16,7 +16,7 @@ public enum LSDTripStage
 }
 ```
 ## LSD Effect Manager - Effects/LSDEffectManager.cs
-This script is the core of the LSD trip logic. It configures the trip stage lengths, activates the necessary scripts with the post processing effects, initiates the LSDEffects class and assigns an event listener to the TripStageStartEvent, it also initializes the SelectLSDCharacterEvent and assigns a listener that starts the trip coroutine when the SelectLSDCharacterEvent triggers. It loads the Bad Trip Scene after the other stages.
+This script is the core of the LSD trip logic. It configures the trip stage lengths, activates the necessary scripts with the **post processing effects**, initiates the **LSDEffects** class and assigns an event listener to the **TripStageStartEvent**, it also initializes the **SelectLSDCharacterEvent** and assigns a listener that starts the trip coroutine when the SelectLSDCharacterEvent triggers. It loads the Bad Trip Scene after the other stages.
 
 ## LSD Effects - Effects/LSDEffects.cs
 Enumerates the stages and invokes the next stage after waiting for the previous one to complete. It acts as a timer with respect to the stage durations defined in the LSD Effect Manager class.
@@ -112,9 +112,9 @@ public class MildHallucinations : TripStageBase
 }
 ```
 OnEnable is used to easily switch effects on and off. When this lifecycle hook is called, the effects are initiated as  
-ScriptableObjects and the initial values are overwritten. Then a PostProcessingVolume is created with the overriden effects.
+ScriptableObjects and the initial values are overwritten. Then a **PostProcessingVolume** is created with the overriden effects.
 The Update method can be used to dynamically change the parameters of the post processing effects during a stage.
-OnDisable is handled by parent class TripStageBase (see above). All stages use a similar script.
+OnDisable is handled by parent class **TripStageBase** (see above). All stages use a similar script.
 
 # Spawning Dancers
 ## Generate People Script - GeneratePeople.cs
