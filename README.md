@@ -105,7 +105,7 @@ OnDisable is handled by parent class TripStageBase (see above).
 
 # Spawning Dancers
 ## Generate People Script - GeneratePeople.cs
-A script that takes dancer prefabs as input from the editor and the number of dancers to spawn. We defined the spawning area with min and max values for the X and Z positions. The script keeps track of the positions of the spawned characters and makes sure other characters are spawned at a certain distance with respect to the ones that exist (see GetValidRandomPosition()). We noticed performance degrades when spawning too many dancers.
+A script that takes dancer prefabs (models) as input from the editor and the number of dancers to spawn. We defined the spawning area with min and max values for the X and Z positions. The script keeps track of the positions of the spawned characters and makes sure other characters are spawned at a certain distance with respect to the ones that exist (see GetValidRandomPosition()). We noticed performance degrades when spawning too many dancers.
 
 
 # Dynamic Lights
