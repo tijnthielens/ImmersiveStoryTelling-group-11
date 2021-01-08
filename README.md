@@ -10,7 +10,8 @@ Enumerates the stages and invokes the next stage after waiting for the previous 
 
 ## Effect Scripts
 ### TripStageBase
-´
+The base class for each trip stage post processing effect script. 
+`
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -22,4 +23,10 @@ public class TripStageBase : MonoBehaviour
         RuntimeUtilities.DestroyVolume(m_Volume, true, true);
     }
 }
-´
+`
+Each effect inherits from this base class and has a postprocessing volume and destroys the volume on disable. The effect manager enables/disables any effect by simply enabling/disabling the relevant script. (see LSDEffectManager.cs:StartEffect)
+
+`
+    gameObject.GetComponent<IntenseHallucinations>().enabled = true;
+    gameObject.GetComponent<IntenseHallucinations>().enabled = false;
+`
