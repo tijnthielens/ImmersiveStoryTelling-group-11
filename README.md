@@ -2,7 +2,7 @@
 
 # LSD Effects
 An LSD trip is composed out of a couple of stages. We defined an enum type for this. Bad Trip stage is theoretically wrong but is added for educational purpose and to achieve a shock effect.
-´´´
+```
 public enum LSDTripStage
 {
     None,
@@ -14,7 +14,7 @@ public enum LSDTripStage
     FractalPhase,
     BadTrip
 }
-´´´
+```
 ## LSD Effect Manager - Effects/LSDEffectManager.cs
 This script is the core of the LSD trip logic. It configures the trip stage lengths, activates the necessary scripts with the post processing effects, initiates the LSDEffects class and assigns an event listener to the TripStageStartEvent, it also initializes the SelectLSDCharacterEvent and assigns a listener that starts the trip coroutine when the SelectLSDCharacterEvent triggers. It loads the Bad Trip Scene after the other stages.
 
